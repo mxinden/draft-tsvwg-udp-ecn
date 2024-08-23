@@ -84,7 +84,7 @@ that operates over UDP.
 {::boilerplate bcp14-tagged}
 
 This document is not a general tutorial on UDP socket programming, and assumes
-basic familiarity with basic socket concepts like binding, socket options, and
+familiarity with basic socket concepts like binding, socket options, and
 common system error codes.
 
 # Receiving ECN marks
