@@ -37,7 +37,7 @@ informative:
 
  CHROMIUM-WINDOWS:
    title: "udp_socket_win.cc"
-   target: "https://source.chromium.org/chromium/chromium/src/+/main:net/socket/udp_socket_posix.cc"
+   target: "https://source.chromium.org/chromium/chromium/src/+/main:net/socket/udp_socket_win.cc"
 
 --- abstract
 
@@ -127,11 +127,11 @@ options of level IPPROTO_IP and type IP_RECVECN for IPv4, and IPPROTO_IPV6
 and IPV6_RECVECN for IPv6. The author was unable to identify any online
 documentation of these options at the time of writing.
 
-For dual-stack socekts, WSASetRecvIPEcn() will not enable ECN reporting for
+For dual-stack sockets, WSASetRecvIPEcn() will not enable ECN reporting for
 IPv4. This requires a separate setsockopt() call using the IP_RECVECN option.
 
 Experiments revealed that if a socket is bound to a IPv6-mapped IPv4 address
-(i.e. it is of the format ::ffff:&lt;IPv4 address&gt;), calling to WSASetRecvIpEcn()
+(i.e. it is of the format ::ffff:&lt;IPv4 address&gt;), calling to WSASetRecvIPEcn()
 returned error EINVAL. The author was not able to formulate a generalized rule
 about this behavior.
 
@@ -230,7 +230,7 @@ information that accompanies a sendmsg() call.
 
 Linux uses a cmsg with level IPPROTO_IP and type IP_TOS for IPv4 packets.
 
-Linux uses a cmsg with level IPPROTO_IPV6 and type IPV6_TCLASS for IPv4 packets.
+Linux uses a cmsg with level IPPROTO_IPV6 and type IPV6_TCLASS for IPv6 packets.
 
 In either case, note that the six most significant bits of the data are the
 DSCP code point, and in general should be preserved while changing the ECN bits.
